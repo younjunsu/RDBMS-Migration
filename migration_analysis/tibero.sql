@@ -61,4 +61,4 @@ select
  where 
     SCHEMA_USER not in (select user_id from dba_users where username in ('SYS','SYSCAT','SYSGIS','OUTLN','TIBERO','TIBERO1','WMSYS','PROSYNC'))
 ;
-         
+
