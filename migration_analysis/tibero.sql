@@ -35,6 +35,7 @@ order by sum_mb desc, onwer
 set lines 10000
 set pages 0
 col CRE_JOB for a10000
+
 alter session set nls_date_format='yyyy/mm/dd hh24:mi:ss';
 select 
     'alter session set current_schema='||
@@ -55,5 +56,9 @@ select
          else 'FALSE' 
     end||
     '); END;'||chr(10)||chr(13)||'/' cre_job 
- from dba_jobs 
-         where SCHEMA_USER not in (select user_id from dba_users where username in ('SYS','SYSCAT','SYSGIS','OUTLN','TIBERO','TIBERO1','WMSYS','PROSYNC'));
+ from
+    dba_jobs 
+ where 
+    SCHEMA_USER not in (select user_id from dba_users where username in ('SYS','SYSCAT','SYSGIS','OUTLN','TIBERO','TIBERO1','WMSYS','PROSYNC'))
+;
+         
